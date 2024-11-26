@@ -21,20 +21,45 @@ export default function Index() {
       />
       <View style={styles.logoTitle}>
         <View style={styles.title}>
-          <TextAtom title="Shoppe" size={TextConstant.size.xxl} isBold={true} />
+          <TextAtom
+            title="Shoppe"
+            size={TextConstant.size.xxl}
+            isBold={true}
+            isCenter={false}
+          />
         </View>
-        <TextAtom
-          title="Build Ecommece UI Kit for your online store"
-          size={TextConstant.size.medium}
-          isBold={false}
-        />
+        <View style={{ marginHorizontal: 63 }}>
+          <TextAtom
+            title="Build Ecommece UI Kit for your online store"
+            size={TextConstant.size.semiLarge}
+            isBold={false}
+            isCenter={true}
+          />
+        </View>
       </View>
-      <Gap type="top" size={20} />
+      <Gap type="top" size={100} />
       <ButtonAtom
         title="Get Started"
         color={Colors.blue}
+        isOnlyIcon={false}
         action={() => console.log("Button is pressed")}
       />
+      <Gap type="top" size={18} />
+      <View style={styles.registerLink}>
+        <TextAtom
+          title="I already have an account"
+          isBold={false}
+          size={TextConstant.size.medium}
+          isCenter={true}
+        />
+        <ButtonAtom
+          isOnlyIcon={true}
+          action={() => console.log("Button Icon Pressed")}
+          color={Colors.blue}
+          iconSize={12}
+          iconName="arrowright"
+        />
+      </View>
     </View>
   );
 }
@@ -49,5 +74,10 @@ const styles = StyleSheet.create({
   },
   title: {
     marginVertical: 24,
+  },
+  registerLink: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

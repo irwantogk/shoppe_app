@@ -1,38 +1,31 @@
 import { View } from "react-native";
 
 export default function Gap({ size, type }: { size: number; type: string }) {
-  const gap: any = {};
+  const dynamicSize = () => {
+    switch (type) {
+      case "vertical":
+        return { marginVertical: size };
+        break;
+      case "horizontal":
+        return { marginHorizontal: size };
+        break;
+      case "right":
+        return { marginRight: size };
+        break;
+      case "left":
+        return { marginLeft: size };
+        break;
+      case "top":
+        return { marginTop: size };
+        break;
+      case "bottom":
+        return { marginBottom: size };
+        break;
+      default:
+        return { margin: size };
+        break;
+    }
+  };
 
-  switch (type) {
-    case "vertical":
-      gap.marginVertical = size;
-      break;
-    case "horizontal":
-      gap.marginHorizontal = size;
-      break;
-    case "right":
-      gap.marginRight = size;
-      break;
-    case "left":
-      gap.marginLeft = size;
-      break;
-    case "top":
-      gap.marginTop = size;
-      break;
-    case "bottom":
-      gap.marginBottom = size;
-      break;
-    default:
-      gap.margin = size;
-      break;
-  }
-
-  console.log(gap);
-  return (
-    <View
-      style={{
-        gap,
-      }}
-    />
-  );
+  return <View style={dynamicSize()} />;
 }
