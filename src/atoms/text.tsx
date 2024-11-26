@@ -13,6 +13,7 @@ export default function TextAtom({
     <Text
       style={{
         fontSize: size,
+        fontFamily: isBold ? "Nunito-Bold" : "Nunito-Regular",
       }}
     >
       {title}
