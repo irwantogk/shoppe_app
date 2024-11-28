@@ -1,4 +1,5 @@
 import { Text } from "react-native";
+import { Colors } from "../constants/colors";
 
 interface ITextAtom {
   title: string;
@@ -12,11 +13,13 @@ export default function TextAtom({
   size = 24,
   isBold = false,
   isCenter = false,
+  color = Colors.black,
 }: {
   title: string;
   size: number;
   isBold?: boolean;
   isCenter?: boolean;
+  color?: string;
 }) {
   return (
     <Text
@@ -24,6 +27,7 @@ export default function TextAtom({
         fontSize: size,
         fontFamily: isBold ? "Nunito-Bold" : "Nunito-Regular",
         textAlign: isCenter ? "center" : "auto",
+        color: color,
       }}
     >
       {title}

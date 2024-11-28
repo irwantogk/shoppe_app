@@ -13,7 +13,6 @@ export default function Index() {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: Colors.white,
       }}
     >
       <Image
@@ -55,7 +54,7 @@ export default function Index() {
         />
         <ButtonAtom
           isOnlyIcon={true}
-          action={() => console.log("Button Icon Pressed")}
+          action={() => router.push("/singnin")}
           color={Colors.blue}
           iconSize={12}
           iconName="arrowright"

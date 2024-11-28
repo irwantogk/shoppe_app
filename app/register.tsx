@@ -1,9 +1,11 @@
 import ButtonAtom from "@/src/atoms/button";
+import TextAtom from "@/src/atoms/text";
 import { Colors } from "@/src/constants/colors";
 import { Picker } from "@react-native-picker/picker";
+import { Link, router } from "expo-router";
 import { Block, Button, Input, Text } from "galio-framework";
 import { useRef, useState } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, Pressable, StyleSheet, View } from "react-native";
 
 import CountryPicker, { CountryCode } from "react-native-country-picker-modal";
 import PhoneInput from "react-native-phone-input";
@@ -38,9 +40,11 @@ export default function Register() {
   };
 
   return (
-    <View>
-      <Text h1>Create Account</Text>
-      <Block>
+    <View style={styles.reisterContainer}>
+      <Text h1 bold style={{ width: "80%" }}>
+        Create Account
+      </Text>
+      <Block style={styles.cameraIcon}>
         <Image
           source={require("@/assets/images/upload-photo.png")}
           style={{
@@ -81,12 +85,25 @@ export default function Register() {
           action={() => console.log("button pressed")}
           buttonWidth="auto"
         />
+
+        <Pressable onPress={() => router.back()} style={styles.cancelBtn}>
+          <TextAtom title="Cancel" size={16} isBold={false} isCenter={true} />
+        </Pressable>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  reisterContainer: {
+    marginTop: 80,
+    marginHorizontal: 20,
+  },
+  cameraIcon: {
+    marginTop: 55,
+    marginBottom: 32,
+    marginLeft: 10,
+  },
   phoneInput: {
     backgroundColor: Colors.white,
     paddingVertical: 12,
@@ -96,5 +113,8 @@ const styles = StyleSheet.create({
   },
   actionBtnRegister: {
     marginTop: 50,
+  },
+  cancelBtn: {
+    marginTop: 24,
   },
 });
