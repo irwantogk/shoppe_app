@@ -3,6 +3,7 @@ import Gap from "@/src/atoms/gap";
 import TextAtom from "@/src/atoms/text";
 import { Colors } from "@/src/constants/colors";
 import { Text as TextConstant } from "@/src/constants/text";
+import { router } from "expo-router";
 import { Image, Text, View, StyleSheet } from "react-native";
 
 export default function Index() {
@@ -42,7 +43,7 @@ export default function Index() {
         title="Get Started"
         color={Colors.blue}
         isOnlyIcon={false}
-        action={() => console.log("Button is pressed")}
+        action={() => router.push("/register")}
       />
       <Gap type="top" size={18} />
       <View style={styles.registerLink}>

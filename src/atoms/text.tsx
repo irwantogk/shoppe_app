@@ -1,15 +1,22 @@
 import { Text } from "react-native";
 
+interface ITextAtom {
+  title: string;
+  size: string;
+  isBold: boolean;
+  isCenter: boolean;
+}
+
 export default function TextAtom({
   title,
-  size,
-  isBold,
-  isCenter,
+  size = 24,
+  isBold = false,
+  isCenter = false,
 }: {
   title: string;
   size: number;
-  isBold: boolean;
-  isCenter: boolean;
+  isBold?: boolean;
+  isCenter?: boolean;
 }) {
   return (
     <Text
