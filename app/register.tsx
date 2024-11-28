@@ -5,7 +5,13 @@ import { Picker } from "@react-native-picker/picker";
 import { Link, router } from "expo-router";
 import { Block, Button, Input, Text } from "galio-framework";
 import { useRef, useState } from "react";
-import { Image, Pressable, StyleSheet, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  Pressable,
+  StyleSheet,
+  View,
+} from "react-native";
 
 import CountryPicker, { CountryCode } from "react-native-country-picker-modal";
 import PhoneInput from "react-native-phone-input";
@@ -40,57 +46,62 @@ export default function Register() {
   };
 
   return (
-    <View style={styles.reisterContainer}>
-      <Text h1 bold style={{ width: "80%" }}>
-        Create Account
-      </Text>
-      <Block style={styles.cameraIcon}>
-        <Image
-          source={require("@/assets/images/upload-photo.png")}
-          style={{
-            height: 90,
-            width: 90,
-          }}
-        />
-      </Block>
-      <Block>
-        <Input placeholder="Email" rounded borderless />
-        <Input placeholder="Password" password rounded borderless viewPass />
+    <ImageBackground
+      source={require("@/assets/images/register_img.png")}
+      style={{ flex: 1, height: "50%" }}
+    >
+      <View style={styles.reisterContainer}>
+        <Text h1 bold style={{ width: "80%" }}>
+          Create Account
+        </Text>
+        <Block style={styles.cameraIcon}>
+          <Image
+            source={require("@/assets/images/upload-photo.png")}
+            style={{
+              height: 90,
+              width: 90,
+            }}
+          />
+        </Block>
+        <Block>
+          <Input placeholder="Email" rounded borderless />
+          <Input placeholder="Password" password rounded borderless viewPass />
 
-        <PhoneInput
-          ref={phoneInput}
-          style={styles.phoneInput}
-          initialValue={phoneNumber}
-          initialCountry={phoneCountryCode.toLowerCase()}
-          onPressFlag={() => setShowPhoneCountryPicker(true)}
-          onChangePhoneNumber={(text) => {
-            setPhoneNumber(text);
-          }}
-        />
+          <PhoneInput
+            ref={phoneInput}
+            style={styles.phoneInput}
+            initialValue={phoneNumber}
+            initialCountry={phoneCountryCode.toLowerCase()}
+            onPressFlag={() => setShowPhoneCountryPicker(true)}
+            onChangePhoneNumber={(text) => {
+              setPhoneNumber(text);
+            }}
+          />
 
-        <CountryPicker
-          countryCode={phoneCountryCode}
-          visible={showPhoneCountryPicker}
-          onSelect={handleCountrySelect}
-          onClose={() => setShowPhoneCountryPicker(false)}
-          withFlagButton={false}
-          withFilter
-        />
-      </Block>
+          <CountryPicker
+            countryCode={phoneCountryCode}
+            visible={showPhoneCountryPicker}
+            onSelect={handleCountrySelect}
+            onClose={() => setShowPhoneCountryPicker(false)}
+            withFlagButton={false}
+            withFilter
+          />
+        </Block>
 
-      <View style={styles.actionBtnRegister}>
-        <ButtonAtom
-          title="Done"
-          color={Colors.blue}
-          action={() => console.log("button pressed")}
-          buttonWidth="auto"
-        />
+        <View style={styles.actionBtnRegister}>
+          <ButtonAtom
+            title="Done"
+            color={Colors.blue}
+            action={() => console.log("button pressed")}
+            buttonWidth="auto"
+          />
 
-        <Pressable onPress={() => router.back()} style={styles.cancelBtn}>
-          <TextAtom title="Cancel" size={16} isBold={false} isCenter={true} />
-        </Pressable>
+          <Pressable onPress={() => router.back()} style={styles.cancelBtn}>
+            <TextAtom title="Cancel" size={16} isBold={false} isCenter={true} />
+          </Pressable>
+        </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
 

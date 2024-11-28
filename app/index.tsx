@@ -54,7 +54,7 @@ export default function Index() {
         />
         <ButtonAtom
           isOnlyIcon={true}
-          action={() => router.push("/singnin")}
+          action={() => router.push("/signin")}
           color={Colors.blue}
           iconSize={12}
           iconName="arrowright"
